@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fbc4f3ed-e1f4-417b-9c25-a4c966fd8c1a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../health_common/src/main/java/com/itheima/pojo/CheckGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../health_common/src/main/java/com/itheima/pojo/CheckItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../health_common/src/main/java/com/itheima/pojo/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../health_common/src/main/java/com/itheima/pojo/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../health_common/src/main/java/com/itheima/pojo/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../health_common/src/main/java/com/itheima/pojo/OrderSetting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../health_common/src/main/java/com/itheima/pojo/Permission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../health_common/src/main/java/com/itheima/pojo/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../health_common/src/main/java/com/itheima/pojo/Setmeal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../health_common/src/main/java/com/itheima/pojo/User.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\maven\maven_repository" />
+        <option name="mavenHome" value="E:/soft/apache-maven-3.8.1" />
+        <option name="userSettingsFile" value="E:\maven\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="15" />
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProjectId" id="20Tn1lsveSpHmK50kYr4AjaPZZK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.4126984" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fbc4f3ed-e1f4-417b-9c25-a4c966fd8c1a" name="Default Changelist" comment="" />
+      <created>1636077231504</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1636077231504</updated>
+      <workItem from="1636077235183" duration="22000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1636077255696">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1636077255696" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1636077244271">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1636077244271" />
+  </component>
+</project>
