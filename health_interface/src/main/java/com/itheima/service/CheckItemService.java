@@ -3,6 +3,8 @@ package com.itheima.service;
 import com.itheima.entity.PageResult;
 import com.itheima.pojo.CheckItem;
 
+import java.util.List;
+
 /**
  * @Auther:liyang
  * @Date:2021/11/12 - 11 -12 -10:20
@@ -20,4 +22,6 @@ public interface CheckItemService {
     CheckItem selectById(Integer id);
 
     void editCheckItem(CheckItem checkItem);
+
+    List<CheckItem> findAll();
 }

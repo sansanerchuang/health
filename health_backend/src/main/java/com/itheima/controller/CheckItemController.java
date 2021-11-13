@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @Auther:liyang
  * @Date:2021/11/12 - 11 -12 -10:12
@@ -91,5 +93,17 @@ public class CheckItemController {
         return new Result(true, MessageConstant.EDIT_CHECKITEM_SUCCESS);
 
     }
+
+    @RequestMapping("/findAll")
+    public Result findAll() {
+        List<CheckItem> checkItems = checkItemService.findAll();
+        if (checkItems != null && checkItems.size() > 0) {
+            return new Result(true, MessageConstant.QUERY_CHECKITEM_SUCCESS, checkItems);
+
+        } else {
+            return new Result(false, MessageConstant.QUERY_CHECKITEM_FAIL);
+        }
+    }
+
 }
 

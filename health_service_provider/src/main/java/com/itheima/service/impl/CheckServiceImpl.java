@@ -10,6 +10,8 @@ import com.itheima.dao.CheckItemDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @Auther:liyang
  * @Date:2021/11/12 - 11 -12 -10:29
@@ -56,6 +58,11 @@ public class CheckServiceImpl implements CheckItemService {
     @Override
     public void editCheckItem(CheckItem checkItem) {
         checkItemDao.editCheckItem(checkItem);
+    }
+
+    @Override
+    public List<CheckItem> findAll() {
+        return checkItemDao.findAll();
     }
 
 }

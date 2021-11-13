@@ -4,6 +4,8 @@ import com.github.pagehelper.Page;
 import com.itheima.entity.PageResult;
 import com.itheima.pojo.CheckItem;
 
+import java.util.List;
+
 /**
  * @Auther:liyang
  * @Date:2021/11/12 - 11 -12 -10:31
@@ -23,4 +25,6 @@ public interface CheckItemDao {
     CheckItem selectById(Integer id);
 
     void editCheckItem(CheckItem checkItem);
+
+    List<CheckItem> findAll();
 }
