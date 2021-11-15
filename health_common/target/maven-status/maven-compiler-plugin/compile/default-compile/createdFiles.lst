@@ -1,7 +1,9 @@
 com\itheima\pojo\Role.class
 com\itheima\pojo\CheckItem.class
 com\itheima\pojo\User.class
+com\itheima\utils\QiniuUtils.class
 com\itheima\pojo\OrderSetting.class
+com\itheima\utils\POIUtils.class
 com\itheima\pojo\Setmeal.class
 com\itheima\pojo\Permission.class
 com\itheima\entity\PageResult.class

@@ -57,7 +57,7 @@
             <div class="filter-container">
                 <el-input placeholder="编码/名称/助记码" v-model="pagination.queryString" style="width: 200px;"
                           class="filter-item" @keyup.enter.native="handleFilter"></el-input>
-                <el-button @click="findPage()" class="dalfBut">查询</el-button>
+                <el-button @click="_findPage()" class="dalfBut">查询</el-button>
                 <el-button type="primary" class="butT" @click="handleCreate()">新建</el-button>
             </div>
             <el-table size="small" current-row-key="id" :data="dataList" stripe highlight-current-row>
@@ -94,15 +94,16 @@
                     <template>
                         <el-tabs v-model="activeName" type="card">
                             <el-tab-pane label="基本信息" name="first">
-                                <el-form label-position="right" label-width="100px">
+                                <el-form ref="dataAddForm" :rules="rules" :model="formData" label-position="right"
+                                         label-width="100px">
                                     <el-row>
                                         <el-col :span="12">
-                                            <el-form-item label="编码">
+                                            <el-form-item label="编码" prop="code">
                                                 <el-input v-model="formData.code"/>
                                             </el-form-item>
                                         </el-col>
                                         <el-col :span="12">
-                                            <el-form-item label="名称">
+                                            <el-form-item label="名称" prop="name">
                                                 <el-input v-model="formData.name"/>
                                             </el-form-item>
                                         </el-col>
@@ -277,6 +278,11 @@
             checkitemIds: [],//新增和编辑表单中检查项对应的复选框，基于双向绑定可以进行回显和数据提交
             dialogFormVisible: false,//控制添加窗口显示/隐藏
             dialogFormVisible4Edit: false//控制编辑窗口显示/隐藏
+            ,
+            rules: {//校验规则
+                code: [{required: true, message: '项目编码为必填项', trigger: 'blur'}],
+                name: [{required: true, message: '项目名称为必填项', trigger: 'blur'}]
+            }
         },
         created() {
             this.findPage();
@@ -284,12 +290,87 @@
         methods: {
             //编辑
             handleEdit() {
+                //表单校验，省略
+                axios.post("/checkGroup/edit.do?checkitemIds=" + this.checkitemIds, this.formData).then((res) => {
+                        this.dialogFormVisible4Edit = false;
+                        if (res.data.flag) {
+                            //成功
+                            this.$message({
+                                type: 'success',
+                                message: res.data.message
+                            })
+                        } else {
+                            this.$message.error(res.data.message);
+                        }
+                    }
+                ).finally(() => {
+                    this.findPage();
+                });
+
+
             },
             //添加
             handleAdd() {
+                //进行表单校验
+                this.$refs['dataAddForm'].validate((valid) => {
+                    //校验通过
+                    if (valid) {
+                        //发送ajax请求
+                        //将所有的表单信息，以及选中的checkitemsid传入controller中，一个添加到group的数据。
+                        this.dialogFormVisible = false;
+                        axios.post("/checkGroup/add.do?checkitemIds=" + this.checkitemIds, this.formData).then((res) => {
+                                // 发送ajax两种情况失败或者成功
+                                if (res.data.flag) {
+                                    //新增失败
+                                    this.$message(
+                                        {
+                                            message: res.data.message,
+                                            type: 'success'
+                                        }
+                                    )
+                                } else {
+                                    //新增失败
+                                    this.$message.error(res.data.message);
+                                }
+                            }
+                        ).finally(() => {
+                                //重新调用分页方法。
+                                this.findPage();
+                            }
+                        )
+                        ;
+
+                    } else {
+                        //校验失败
+                        this.$message.error("表单数据校验失败");
+
+                    }
+                });
+
             },
+
+            _findPage() {
+                this.pagination.currentPage = 1;
+                this.findPage();
+            }
+            ,
             //分页查询
             findPage() {
+                //将所有group的数据显示出来
+                //发送axaj请求，将所有的group的数据进行回写。通过分页助手
+                //定义了分页模型数据，出入当前的页码
+                var param = {
+                    currentPage: this.pagination.currentPage,
+                    pageSize: this.pagination.pageSize,
+                    queryString: this.pagination.queryString,
+                }
+                //发送ajax请求
+                axios.post("/checkGroup/findPage.do", param).then((res) => {
+                        //返回的是PageResult对象只有rows以及total
+                        this.dataList = res.data.rows;
+                        this.pagination.total = res.data.total;
+                    }
+                );
             },
             // 重置表单
             resetForm() {
@@ -321,12 +402,45 @@
             },
             // 弹出编辑窗口
             handleUpdate(row) {
+                //设置为第一页
+                this.activeName = 'first';
+                //将编辑表单的数据重置
+                this.resetForm();
+                axios.get("/checkGroup/findById.do?id=" + row.id).then((res) => {
+                        if (res.data.flag) {
+                            this.formData = res.data.data;
+                            //发送ajax请求用于表单项的回写
+                            axios.get("/checkitem/findAll.do").then((res) => {
+                                    if (res.data.flag) {
+                                        //查询到这个group之后在取查寻对应的checkitem;
+                                        this.tableData = res.data.data;
+                                        axios.get("/checkGroup/findCheckitemsById.do?id=" + row.id).then((res) => {
+                                                if (res.data.flag) {
+                                                    this.checkitemIds = res.data.data;
+                                                } else {
+                                                    this.$message.error(res.data.message);
+                                                }
+                                            }
+                                        );
+                                    }
+                                }
+                            );
+                        } else {
+                            this.$message.error(res.data.message);
+                        }
+                    }//
+                );
+                this.dialogFormVisible4Edit = true;
+
             },
             //切换页码
             handleCurrentChange(currentPage) {
+                this.pagination.currentPage = currentPage;
+                this.findPage();
             },
             // 删除
             handleDelete(row) {
+
             }
         }
     })
