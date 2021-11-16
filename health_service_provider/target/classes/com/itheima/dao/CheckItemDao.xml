@@ -63,4 +63,10 @@
     <select id="findAll" resultType="com.itheima.pojo.CheckItem">
         select * from t_checkitem
     </select>
+    <!--    根据检查组id来查询checkitem，查两长表，返回的是一个list集合数据，数据长度大于一，由mybatis自动封装-->
+    <select id="findCheckitemById" resultType="com.itheima.pojo.CheckItem" parameterType="int">
+        select * from t_checkitem
+            where id
+  	        in (select checkitem_id from t_checkgroup_checkitem where checkgroup_id=#{id})
+    </select>
 </mapper>

@@ -13,6 +13,29 @@
         values
         (#{code},#{name},#{sex},#{age},#{helpCode},#{price},#{remark},#{attention},#{img})
     </insert>
+    <!--多表查询，中间封装类-->
+    <resultMap id="baseSetmeal" type="com.itheima.pojo.Setmeal">
+        <id property="id" column="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="helpCode" property="helpCode"/>
+        <result column="sex" property="sex"/>
+        <result column="age" property="age"/>
+        <result column="price" property="price"/>
+        <result column="remark" property="remark"/>
+        <result column="attention" property="attention"/>
+        <result column="img" property="img"/>
+    </resultMap>
+    <!--    继承上面的resultMap-->
+    <resultMap id="findByIdResultMap" type="com.itheima.pojo.Setmeal" extends="baseSetmeal">
+        <!-- 编写持有的引用对象的类型-->
+        <collection property="checkGroups"
+                    ofType="com.itheima.pojo.CheckGroup"
+                    column="id"
+                    javaType="ArrayList"
+                    select="com.itheima.dao.CheckGroupDao.findCheckGroupById"
+        ></collection>
+    </resultMap>
 
     <!--    动态sql语句-->
     <select id="queryByCondition" parameterType="string"
@@ -28,6 +51,15 @@
         values
         (#{setMealId},#{checkGroupId})
     </insert>
+    <!--查询所有的套餐信息-->
+    <select id="getSetMeals" resultType="com.itheima.pojo.Setmeal">
+        select * from t_setmeal
+    </select>
+    <!--    查询套餐的详细信息-->
+    <!--    多表查询的sql语句-->
+    <select id="findById" parameterType="int" resultMap="findByIdResultMap">
+        select * from  t_setmeal where id = #{id}
+    </select>
 
 
 </mapper>

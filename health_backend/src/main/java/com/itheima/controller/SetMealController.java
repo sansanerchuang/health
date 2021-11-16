@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import redis.clients.jedis.JedisPool;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -67,6 +68,7 @@ public class SetMealController {
         //将integers的值的
 
     }
+
 
     @RequestMapping("/findPage")
     public PageResult findPage(@RequestBody QueryPageBean pageBean) {

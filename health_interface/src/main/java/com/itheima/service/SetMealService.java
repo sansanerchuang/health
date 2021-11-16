@@ -1,7 +1,6 @@
 package com.itheima.service;
 
 import com.itheima.entity.PageResult;
-import com.itheima.pojo.CheckGroup;
 import com.itheima.pojo.Setmeal;
 
 import java.util.List;
@@ -17,6 +16,10 @@ public interface SetMealService {
     public void add(Setmeal setmeal, Integer[] integers);
 
     PageResult findPage(Integer currentPage, Integer pageSize, String queryString);
+
+    List<Setmeal> getSetMeals();
+
+    Setmeal findSetMealById(int id);
 
 //    PageResult findPage(Integer currentPage, Integer pageSize, String queryString);
 //
