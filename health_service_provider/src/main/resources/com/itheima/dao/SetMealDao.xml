@@ -61,5 +61,8 @@
         select * from  t_setmeal where id = #{id}
     </select>
 
-
+    <!--    查询所有-->
+    <select id="findAll" resultType="com.itheima.pojo.Setmeal">
+        select *from t_setmeal
+    </select>
 </mapper>

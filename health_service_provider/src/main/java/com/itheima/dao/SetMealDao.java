@@ -27,6 +27,8 @@ public interface SetMealDao {
 
     Setmeal findById(int id);
 
+    List<Setmeal> findAll();
+
 //    Page<CheckGroup> queryByCondition(String queryString);
 
 
