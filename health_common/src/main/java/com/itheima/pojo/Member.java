@@ -23,6 +23,16 @@ public class Member implements Serializable{
         return id;
     }
 
+    public Member() {
+    }
+
+    public Member(String name, String sex, String idCard, String phoneNumber) {
+        this.name = name;
+        this.sex = sex;
+        this.idCard = idCard;
+        this.phoneNumber = phoneNumber;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }

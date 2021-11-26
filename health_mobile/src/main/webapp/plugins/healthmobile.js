@@ -75,7 +75,7 @@ function doLoop() {
     if (nums > 0) {
         validateCodeButton.value = nums + '秒后重新获取';
     } else {
-        clearInterval(clock); //清除js定时器
+        clearInterval(clock); //清除js定时器，不清除，该定时器会一直执行
         validateCodeButton.disabled = false;
         validateCodeButton.value = '重新获取验证码';
         nums = 30; //重置时间
