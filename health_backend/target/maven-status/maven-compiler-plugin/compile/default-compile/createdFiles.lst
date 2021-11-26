@@ -1,4 +1,5 @@
 com\itheima\controller\SetMealController.class
 com\itheima\controller\OrderSettingController.class
+com\itheima\sercurity\SpringSecurityUserService.class
 com\itheima\controller\CheckItemController.class
 com\itheima\controller\CheckGroupController.class
